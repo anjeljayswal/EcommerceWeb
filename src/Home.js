@@ -3,6 +3,7 @@ import HeroSection from "./components/HeroSection";
 import Services from "./components/Services";
 import Trusted from "./components/Trusted";
 
+
 const Home = () => {
   const data = {
     name: "thapa store",
@@ -10,10 +11,11 @@ const Home = () => {
 
   return (
     <>
-    <HeroSection myData={data} />;
-    <Services />
+      <HeroSection myData={data} />;
+      <Services />
       <Trusted />
-       </>
+      
+    </>
   )
 };
 
