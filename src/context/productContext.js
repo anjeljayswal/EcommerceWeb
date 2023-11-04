@@ -5,6 +5,7 @@ import reducer from "../reducer/productReducer";
 const AppContext = createContext();
 
 const API = "https://api.pujakaitem.com/api/products";
+// const API = 'https://dummyjson.com/products?limit=100';
 
 const initialState = {
   isLoading: false,

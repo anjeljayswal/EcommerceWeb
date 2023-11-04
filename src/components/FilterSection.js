@@ -3,22 +3,73 @@ import { useFilterContext } from "../context/filter_context";
 
 const FilterSection = () => {
   const {
-    filters:{text},
-    updateFilterValue
-  }=useFilterContext();
-return (
-  <Wrapper>
-  <div className="filter-search">
-    <form action="" onSubmit={(e)=>e.preventDefault()}>
-      <input 
-        type="text" 
-        name="text"
-        value={text}
-        onChange={updateFilterValue}        
-       />
-    </form>
-  </div>
-  </Wrapper>
+    filters: { text,category, company },
+    updateFilterValue,
+    all_products
+  } = useFilterContext();
+
+  // get the unique values of each property
+  const getUniqueData = (data, attr) => {
+    let newVal = data.map((curElem) => {
+      return curElem[attr];
+    });
+    // console.log(newVal);
+
+    if (attr === "colors") {
+      // return (newVal = ["All", ...new Set([].concat(...newVal))]);
+      newVal = newVal.flat();
+    }
+
+    return (newVal = ["all", ...new Set(newVal)]);
+    // console.log(newVal);
+  };
+
+  // we need to have the individual data of each in an array format
+  const categoryData = getUniqueData(all_products, "category");
+  const companyData = getUniqueData(all_products, "company");
+  const colorsData = getUniqueData(all_products, "colors");
+  // console.log(
+  //   "🚀 ~ file: FilterSection.js ~ line 23 ~ FilterSection ~ companyData",
+  //   colorsData
+  // );
+
+  return (
+    <Wrapper>
+      <div className="filter-search">
+        <form action="" onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="text"
+            name="text"
+            value={text}
+            onChange={updateFilterValue}
+            placeholder="SEARCH"
+          />
+        </form>
+      </div>
+
+      <div className="filter-category">
+        <h3>Category</h3>
+        <div>
+          {categoryData.map((curElem, index) => {
+            return (
+              <button
+                key={index}
+                type="button"
+                name="category"
+                value={curElem}
+                className={curElem === category ? "active" : ""}
+                onClick={updateFilterValue}>
+                {curElem}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      
+
+
+    </Wrapper>
   );
 };
 
