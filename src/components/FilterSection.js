@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { useFilterContext } from "../context/filter_context";
+import { FaCheck } from "react-icons/fa";
 
 const FilterSection = () => {
   const {
-    filters: { text,category, company },
+    filters: { text, category, color },
     updateFilterValue,
-    all_products
+    all_products,
   } = useFilterContext();
 
   // get the unique values of each property
@@ -13,7 +14,6 @@ const FilterSection = () => {
     let newVal = data.map((curElem) => {
       return curElem[attr];
     });
-    // console.log(newVal);
 
     if (attr === "colors") {
       // return (newVal = ["All", ...new Set([].concat(...newVal))]);
@@ -21,7 +21,6 @@ const FilterSection = () => {
     }
 
     return (newVal = ["all", ...new Set(newVal)]);
-    // console.log(newVal);
   };
 
   // we need to have the individual data of each in an array format
@@ -36,13 +35,13 @@ const FilterSection = () => {
   return (
     <Wrapper>
       <div className="filter-search">
-        <form action="" onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             name="text"
+            placeholder="Search"
             value={text}
             onChange={updateFilterValue}
-            placeholder="SEARCH"
           />
         </form>
       </div>
@@ -65,7 +64,7 @@ const FilterSection = () => {
           })}
         </div>
       </div>
-      
+
       <div className="filter-company">
         <h3>Company</h3>
 
@@ -76,6 +75,7 @@ const FilterSection = () => {
             className="filter-company--select"
             onClick={updateFilterValue}>
             {companyData.map((curElem, index) => {
+              
               return (
                 <option key={index} value={curElem} name="company">
                   {curElem}
@@ -86,7 +86,44 @@ const FilterSection = () => {
         </form>
       </div>
 
+      <div className="filter-colors colors">
+        <h3>Colors</h3>
 
+        <div className="filter-color-style">
+          {colorsData.map((curColor, index) => {
+            console.log("file:filterSection.js = line 93 {colorData.map -curColor", curColor)
+            
+            console.log("file:filterSection.js = line 93 {colorData.map -curColor", color)
+            if(curColor === "all"){
+              return (
+              <button
+                key={index}
+                type="button"
+                value={curColor}
+                name="color"
+                // style={{ backgroundColor: curColor }}
+                className="color-all--style"
+                onClick={updateFilterValue}>
+                all
+              </button>
+            );
+                
+              }
+            return (
+              <button
+                key={index}
+                type="button"
+                value={curColor}
+                name="color"
+                style={{ backgroundColor: curColor }}
+                className={color=== curColor ? "btnStyle active": "btnStyle"}
+                onClick={updateFilterValue}>
+                {color === curColor ? <FaCheck className= 'checkStyle'/> : null}
+              </button>
+            );
+          })}
+        </div>
+      </div>
     </Wrapper>
   );
 };
