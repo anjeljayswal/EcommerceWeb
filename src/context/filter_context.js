@@ -27,14 +27,17 @@ export const FilterContextProvider = ({ children }) => {
   };
 
   //   sorting function 
-  const sorting = () => {
-    dispatch({ type: "GET_SORT_VALUE" });
+  const sorting = (event) => {
+    // dispatch({ type: "GET_SORT_VALUE" });
+    let userValue = event.target.value;
+    dispatch({ type: "GET_SORT_VALUE", payload:userValue });
   };
 
   // to sort the product 
   useEffect(() => {
     // console.log("hii");
-    dispatch({ type: "SORTING_PRODUCTS", payload: products });
+    // dispatch({ type: "SORTING_PRODUCTS", payload: products });
+    dispatch({ type: "SORTING_PRODUCTS"});
   }, [state.sorting_value])
 
   useEffect(() => {
