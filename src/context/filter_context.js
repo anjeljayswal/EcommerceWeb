@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { useProductContext } from "./productContext";
 import reducer from "../reducer/filterReducer";
+import { type } from "@testing-library/user-event/dist/type";
 
 const FilterContext = createContext();
 
@@ -52,6 +53,13 @@ export const FilterContextProvider = ({ children }) => {
     return dispatch({type:"UPDATE_FILTER_VALUE",payload:{name,value}})
   }
 
+
+  // to clear the filter value 
+  const clearFilters =()=>{
+    dispatch({type:"CLEAR_FILTERS"})
+
+  }
+
   // to sort the product 
   useEffect(() => {
     // console.log("hii");
@@ -66,7 +74,7 @@ export const FilterContextProvider = ({ children }) => {
 
   return (
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, sorting,updateFilterValue }}>
+      value={{ ...state, setGridView, setListView, sorting,updateFilterValue,clearFilters }}>
       {children}
     </FilterContext.Provider>
   );
