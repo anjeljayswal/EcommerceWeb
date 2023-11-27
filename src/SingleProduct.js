@@ -42,7 +42,7 @@ const SingleProduct = () => {
 
   return (
     <Wrapper>
-      <PageNavigation title={name} />
+      {/* <PageNavigation title={name} /> */}
       <Container className="container">
         <div className="grid grid-two-column">
           {/* product Images  */}
