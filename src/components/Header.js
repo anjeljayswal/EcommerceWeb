@@ -7,7 +7,12 @@ const Header = () => {
   return (
     <MainHeader>
       <NavLink to="/">
-        <img src="./images/logo.png" alt="my logo img" />
+        {/* <img src="./images/logo.jpeg" alt="my logo img"  /> */}
+        <div class="logo">
+          <h1 class="logo-text">
+            <span>Jayswal</span>Store
+          </h1>
+        </div>
       </NavLink>
       <Nav />
     </MainHeader>
@@ -24,7 +29,19 @@ const MainHeader = styled.header`
   position: relative;
 
   .logo {
-    height: 5rem;
+    height: 11rem;
+    ${'' /* float: left; */}
+    margin-right: 2rem;
+    ${'' /* height: inherit; */}
   }
+  .logo-text {
+    margin: 9px;
+    font-family: 'Candal', serif;
+    color: #8490ff;
+  }
+  .logo-text span {
+    color: #8490ff;
+  }
+  
 `;
 export default Header;
