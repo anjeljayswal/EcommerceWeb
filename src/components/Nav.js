@@ -31,7 +31,6 @@ const Nav = () => {
         }
       }
     }
-
     .mobile-navbar-btn {
       display: none;
       background-color: transparent;

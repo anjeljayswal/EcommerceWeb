@@ -94,9 +94,9 @@ const FilterSection = () => {
 
         <div className="filter-color-style">
           {colorsData.map((curColor, index) => {
-            console.log("file:filterSection.js = line 93 {colorData.map -curColor", curColor)
+            {/* console.log("file:filterSection.js = line 93 {colorData.map -curColor", curColor) */}
 
-            console.log("file:filterSection.js = line 93 {colorData.map -curColor", color)
+            {/* console.log("file:filterSection.js = line 93 {colorData.map -curColor", color) */}
             if (curColor === "all") {
               return (
                 <button

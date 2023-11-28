@@ -2,7 +2,7 @@ const filterReducer = (state, action) => {
     switch (action.type) {
         case "LOAD_FILTER_PRODUCTS":
             let priceArr = action.payload.map((currElem) => currElem.price);
-            console.log("price max", priceArr);
+            // console.log("price max", priceArr);
             // 1st way 
             // console.log(Math.max.apply(priceArr));
 
@@ -11,7 +11,7 @@ const filterReducer = (state, action) => {
             //  console.log(maxprice);
 
             let maxPrice = Math.max(...priceArr);
-            console.log("MaxPrice", maxPrice);
+            // console.log("MaxPrice", maxPrice);
 
             return {
                 ...state,
